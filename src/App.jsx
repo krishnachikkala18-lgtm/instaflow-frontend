@@ -231,9 +231,14 @@ function AuthPage({ onLogin }) {
               <div style={{ fontSize: "20px", fontWeight: "800", color: c.text, marginBottom: "4px" }}>{mode === "login" ? "Welcome back 👋" : "Get started free 🚀"}</div>
               <div style={{ fontSize: "12px", color: c.text2 }}>{mode === "login" ? "Sign in to InstaFlow AI" : "No credit card required · 7-day free trial"}</div>
             </div>
-            <button style={{ ...s.btn("#fff", "#333"), width: "100%", justifyContent: "center", marginBottom: "14px", padding: "12px" }}>
-              <span style={{ fontSize: "15px", fontWeight: "900" }}>G</span> Continue with Google
-            </button>
+            <button
+  style={{ ...s.btn("#fff", "#333"), width: "100%", justifyContent: "center", marginBottom: "14px", padding: "12px" }}
+  onClick={handleGoogleLogin}
+  disabled={loading}
+>
+  <span style={{ fontSize: "15px", fontWeight: "900" }}>G</span>
+  {loading ? "Signing in..." : "Continue with Google"}
+</button>
             <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "14px" }}>
               <div style={{ flex: 1, height: "1px", background: c.border }} />
               <span style={{ fontSize: "11px", color: c.text2 }}>or email</span>
