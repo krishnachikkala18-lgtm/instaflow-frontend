@@ -1,4 +1,3 @@
-import { signInWithGoogle } from "./firebase";
 import { useState, useRef, useCallback, useEffect } from "react";
 
 const BACKEND = "https://krishna-ai-backend-had6.onrender.com";
