@@ -1,3 +1,4 @@
+import { signInWithGoogle } from "./firebase";
 import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth";
 
