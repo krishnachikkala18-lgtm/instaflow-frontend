@@ -203,7 +203,17 @@ function AuthPage({ onLogin }) {
     } catch (e) { setErr("Server error. Try again."); }
     setLoading(false);
   };
-
+const handleGoogleLogin = async () => {
+  setLoading(true); setErr("");
+  try {
+    const googleUser = await signInWithGoogle();
+    const fakeUser = { name: googleUser.name, email: googleUser.email, photo: googleUser.photo, uid: googleUser.uid, plan: "free" };
+    localStorage.setItem("if_user", JSON.stringify(fakeUser));
+    localStorage.setItem("if_token", googleUser.uid);
+    onLogin(fakeUser, googleUser.uid);
+  } catch (e) { setErr("Google login failed. Try again."); }
+  setLoading(false);
+};
   return (
     <div style={{ background: dark ? `radial-gradient(ellipse at 20% 50%,#1a0a2e,${D} 60%)` : "#F5F5F5", minHeight: "100vh", display: "flex", fontFamily: "system-ui,sans-serif", color: c.text }}>
       <div style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "center", padding: "48px", maxWidth: "480px" }}>
